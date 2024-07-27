@@ -90,22 +90,6 @@ def test_login_with_empty_fields(page):
     error_message = error_message_locator.text_content()
     assert error_message == "Required", "Error message not displayed correctly for empty fields."
 
-# def test_forgot_password_link(page):
-#     page.goto("https://opensource-demo.orangehrmlive.com/web/index.php/auth/login")
-
-#     # Verify the "Forgot your password?" link is visible
-#     forgot_password_link = page.locator('//p[text()="Forgot your password? "]')
-#     # assert forgot_password_link.is_visible(), "Forgot password link is not visible."
-
-#     # Click on the "Forgot your password?" link
-#     forgot_password_link.click()
-
-#     # Wait for the reset password page to load
-#     page.wait_for_timeout(3000)  # Adjust wait time as needed
-
-#     # Verify successful navigation to the password reset page
-#     assert page.url() == "https://opensource-demo.orangehrmlive.com/web/index.php/auth/requestPasswordResetCode", "URL did not change to password reset page."
-
 def test_login_with_different_roles(page):
     users = [
         {"username": "Admin", "password": "admin123"},
