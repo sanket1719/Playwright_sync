@@ -117,4 +117,4 @@ def test_login_with_different_roles(page):
         # e.g., verify specific elements or sections visible to each role
 
         # Log out if necessary and prepare for the next user
-        # page.locator('text=Logout').click()
+        page.locator('text=Logout').click()
