@@ -28,7 +28,7 @@ def test_login_with_valid_credentials(page):
     page.locator('//button[@type="submit"]').click()
 
     # Wait for the dashboard to load
-    page.wait_for_timeout(3000)  # Adjust wait time as needed
+    page.wait_for_timeout(3000)  
 
     # Verify successful login
     page_title = page.title()
@@ -47,7 +47,7 @@ def test_login_with_invalid_username(page):
     page.locator('//button[@type="submit"]').click()
 
     # Wait for the error message to appear
-    page.wait_for_timeout(3000)  # Adjust wait time as needed
+    page.wait_for_timeout(3000)  
 
     # Verify error message
     error_message = page.locator('text=Invalid credentials').text_content()
@@ -66,7 +66,7 @@ def test_login_with_invalid_password(page):
     page.locator('//button[@type="submit"]').click()
 
     # Wait for the error message to appear
-    page.wait_for_timeout(3000)  # Adjust wait time as needed
+    page.wait_for_timeout(3000) 
 
     # Verify error message
     error_message = page.locator('text=Invalid credentials').text_content()
@@ -84,7 +84,7 @@ def test_login_with_empty_fields(page):
 
     # Wait for the error message to appear
     error_message_locator = page.locator('//*[@id="app"]/div[1]/div/div[1]/div/div[2]/div[2]/form/div[1]/div/span')
-    page.wait_for_timeout(3000)  # Adjust wait time as needed
+    page.wait_for_timeout(3000)
 
     # Verify error message
     error_message = error_message_locator.text_content()
@@ -107,7 +107,7 @@ def test_login_with_different_roles(page):
         page.locator('//button[@type="submit"]').click()
 
         # Wait for the page to load
-        page.wait_for_timeout(3000)  # Adjust wait time as needed
+        page.wait_for_timeout(3000) 
 
         # Verify successful login
         page_title = page.title()
