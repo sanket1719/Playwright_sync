@@ -88,7 +88,7 @@ def test_day(page: page):
     selected_option = day_selector.input_value()
     assert selected_option == '17',f"Expected '17', but got {selected_option}"
 
-def test_language(page: Page):
+def test_language(page: page):
     page.goto("https://demo.automationtesting.in/Register.html")
     languages = ["English", "Hindi"]
     page.locator('//*[@id="msdd"]').click()
@@ -100,6 +100,26 @@ def test_language(page: Page):
     selected_texts = selected_elements.all_text_contents()
 
     assert sorted(selected_texts) == sorted(languages), f"Expected {languages}, but got {selected_texts}"
+    
+def test_skill(page: page):
+    page.goto("https://demo.automationtesting.in/Register.html")
+    skill_selector = page.query_selector('//*[@id="Skills"]')
+    skill_selector.select_option(value='Python')
+
+    selected_skill = skill_selector.input_value()
+
+    assert selected_skill == 'Python', f"Expected {skill_selector}, but got {selected_skill}"
+
+def test_country(page: page):
+    page.goto("https://demo.automationtesting.in/Register.html")
+    page.locator("span[role='combobox']").click()
+    page.locator("li[role='treeitem']", has_text="India").click()
+
+    selected_country = page.locator("span[role='combobox']").text_content()
+
+    assert selected_country == 'India', f"Expected 'India', but got {selected_country}"
+
+
 
 
 
