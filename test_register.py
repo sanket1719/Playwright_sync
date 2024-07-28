@@ -1,4 +1,3 @@
-# test_registration.py
 import pytest
 from playwright.sync_api import sync_playwright, Page
 
@@ -100,7 +99,18 @@ def test_language(page: page):
     selected_texts = selected_elements.all_text_contents()
 
     assert sorted(selected_texts) == sorted(languages), f"Expected {languages}, but got {selected_texts}"
-    
+
+def test_gender(page: page):
+    page.goto("https://demo.automationtesting.in/Register.html")
+
+    male_radio_button = page.locator('input[value="Male"]')
+    male_radio_button.click()
+
+    is_checked = page.locator('input[value="Male"]').is_checked()
+    assert is_checked, "The 'Male' radio button was not selected."
+
+
+
 def test_skill(page: page):
     page.goto("https://demo.automationtesting.in/Register.html")
     skill_selector = page.query_selector('//*[@id="Skills"]')
@@ -119,8 +129,13 @@ def test_country(page: page):
 
     assert selected_country == 'India', f"Expected 'India', but got {selected_country}"
 
+def test_password(page: page):
+    page.goto("https://demo.automationtesting.in/Register.html")
+    password = page.locator('//*[@id="firstpassword"]')
+    password.fill('Asdf@1943')
 
+    entered_password = password.input_value()
 
-
+    assert entered_password == 'Asdf@1943', f"Expected 'Asdf@1943', but got {entered_password}"
 
 
